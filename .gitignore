@@ -42,7 +42,7 @@ tmp/
 *.actual
 *.expect
 *.diff
-*.out
+# *.out 已移除，因為 tests/ 需要 .out 檔案
 
 # Python virtual environments
 venv/

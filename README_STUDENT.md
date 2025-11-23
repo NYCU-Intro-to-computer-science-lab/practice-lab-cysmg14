@@ -98,6 +98,73 @@ requirements.txt  ← ❌ 依賴清單，不要改
 
 **大約需要 15-30 分鐘**完成環境設定，之後就可以一直使用了！
 
+### ⚡ 快速環境設定（推薦）
+
+> ⚠️ **重要提醒**：每個人的專案目錄名稱都不一樣！
+> 
+> GitHub Classroom 會自動在專案名稱後面加上您的 GitHub 帳號，例如：
+> - `nycu-intro-to-computer-science-lab-practice-lab-Course_Lab_Example_Template-your-username`
+> - `cpp-lab-practice-your-github-id`
+> 
+> 請確認您實際的專案目錄名稱！
+
+**macOS / Linux**:
+
+```bash
+# 切換到專案目錄（⚠️ 請替換成您實際的目錄名稱！）
+cd ~/路徑/到/專案/您的專案目錄名稱
+
+# 執行自動設定腳本
+bash scripts/setup_env.sh
+```
+
+**Windows**:
+
+```cmd
+REM 切換到專案目錄（⚠️ 請替換成您實際的目錄名稱！）
+cd C:\路徑\到\專案\您的專案目錄名稱
+
+REM 執行自動設定腳本
+scripts\setup_env.bat
+```
+
+**💡 使用 VS Code 的同學**：
+
+如果您用 VS Code 開啟專案資料夾，終端機會**自動在專案根目錄**開啟，不需要手動 `cd`！
+
+驗證方法：
+
+```bash
+# 檢查當前目錄
+pwd                    # macOS/Linux
+cd                     # Windows
+
+# 應該會顯示包含 setup_env.sh、run_tests.py 等檔案的目錄
+ls                     # macOS/Linux  
+dir                    # Windows
+```
+
+腳本會自動：
+- ✅ 檢查 Python 版本
+- ✅ 建立虛擬環境
+- ✅ 安裝所有必要套件
+- ✅ 驗證環境設定
+
+### 🔍 檢查環境是否正確設定
+
+如果不確定環境是否設定正確，執行驗證腳本：
+
+```bash
+python3 scripts/verify_python_setup.py
+```
+
+您應該看到：
+- ✓ Python 版本：通過
+- ✓ 必要套件：通過
+- ✓ 目錄結構：通過
+
+如果有 ⚠️ 虛擬環境警告，**可以忽略**（在 GitHub Actions 中不需要虛擬環境）。
+
 ---
 
 ## 🚀 快速開始（三步驟）
@@ -106,11 +173,30 @@ requirements.txt  ← ❌ 依賴清單，不要改
 
 每次使用前，都需要啟動虛擬環境。
 
+**💡 使用 VS Code？**
+
+在 VS Code 中：
+1. 點擊「檔案」→「開啟資料夾」→ 選擇您的專案資料夾
+2. 按 `` Ctrl+` ``（或 `Cmd+` ` macOS）開啟內建終端機
+3. 終端機會自動在專案根目錄開啟
+
+**確認您在正確的目錄**：
+
+```bash
+# 檢查當前目錄
+pwd                    # macOS/Linux
+cd                     # Windows
+
+# 列出檔案，應該看到 run_tests.py, src/, tests/ 等
+ls                     # macOS/Linux
+dir                    # Windows
+```
+
 **Windows**:
 
 ```cmd
-REM 開啟命令提示字元，切換到專案目錄
-cd C:\路徑\到\專案\input-output-test-module
+REM 開啟命令提示字元，切換到專案目錄（⚠️ 替換成您的實際目錄！）
+cd C:\路徑\到\專案\您的專案目錄名稱
 
 REM 啟動虛擬環境
 venv\Scripts\activate
@@ -119,8 +205,8 @@ venv\Scripts\activate
 **macOS / Linux**:
 
 ```bash
-# 開啟終端機，切換到專案目錄
-cd ~/路徑/到/專案/input-output-test-module
+# 開啟終端機，切換到專案目錄（⚠️ 替換成您的實際目錄！）
+cd ~/路徑/到/專案/您的專案目錄名稱
 
 # 啟動虛擬環境
 source venv/bin/activate
@@ -767,6 +853,86 @@ git pull origin main
 - [C++ Reference](https://cppreference.com/)
 - [LeetCode](https://leetcode.com/) - 練習程式題
 - [Codeforces](https://codeforces.com/) - 程式競賽
+
+---
+
+---
+
+## 📋 常用指令總結
+
+### 環境相關
+
+```bash
+# 首次設定環境（自動化）
+bash scripts/setup_env.sh           # macOS/Linux
+scripts\setup_env.bat               # Windows
+
+# 驗證環境設定
+python3 scripts/verify_python_setup.py
+
+# 啟動虛擬環境
+source venv/bin/activate            # macOS/Linux
+venv\Scripts\activate               # Windows
+
+# 關閉虛擬環境
+deactivate
+```
+
+### 測試相關
+
+```bash
+# 測試所有題目
+python3 run_tests.py
+
+# 測試單一題目
+python3 run_tests.py p1
+
+# 啟動網頁介面（推薦）
+python3 run_tests.py --gui
+
+# 查看分數
+cat build/p1.score                   # macOS/Linux
+type build\p1.score                  # Windows
+```
+
+### Git 相關
+
+```bash
+# 查看狀態
+git status
+
+# 加入檔案
+git add src/*.cpp
+
+# 提交變更
+git commit -m "完成 p1 和 p2"
+
+# 推送到 GitHub
+git push origin main
+
+# 拉取最新版本
+git pull origin main
+
+# 查看歷史
+git log --oneline
+```
+
+### 除錯相關
+
+```bash
+# 查看測試輸入
+cat tests/p1/inputs/01.in           # macOS/Linux
+type tests\p1\inputs\01.in          # Windows
+
+# 查看正確輸出
+cat tests/p1/outputs/01.out         # macOS/Linux
+type tests\p1\outputs\01.out        # Windows
+
+# 手動測試程式
+g++ -std=c++17 -o test src/p1.cpp
+./test < tests/p1/inputs/01.in      # macOS/Linux
+test.exe < tests\p1\inputs\01.in    # Windows
+```
 
 ---
 
