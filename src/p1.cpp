@@ -7,6 +7,7 @@ using namespace std;
 // 回傳: 根據 opcode 計算的結果
 int calculate(int opcode, int num1, int num2) {
     // 在此實作你的程式碼
+    cout << opcode;
     return 0;
 }
 
